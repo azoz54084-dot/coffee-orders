@@ -204,7 +204,7 @@ function qtyValue(v){v=String(v||'').trim().toLowerCase().replace(/,/g,'');if(/^
 function chg(btn,d){let c=btn.closest('.card'),i=c.querySelector('.qty input'),n=Math.max(0,qtyValue(i.value)+d);i.value=n;c.classList.toggle('sel',n>0)}
 function qtyInput(i){let c=i.closest('.card'),n=qtyValue(i.value);c.classList.toggle('sel',n>0)}
 function setQty(btn,v){let c=btn.closest('.card'),i=c.querySelector('.qty input');i.value=v===1000?'1k':v;qtyInput(i)}
-document.querySelectorAll('.qty').forEach(q=>{let x=document.createElement('div');x.className='quickqty';[1,5,20,100,500,1000].forEach(v=>{let b=document.createElement('button');b.type='button';b.textContent=v===1000?'1K':v;b.onclick=()=>setQty(b,v);x.appendChild(b)});q.parentNode.appendChild(x)});
+document.querySelectorAll('.qty').forEach(q=>{let x=document.createElement('div');x.className='quickqty';[1,5,20,50,100].forEach(v=>{let b=document.createElement('button');b.type='button';b.textContent=v;b.onclick=()=>setQty(b,v);x.appendChild(b)});q.parentNode.appendChild(x)});
 function sendOrder(){
  let a=[];document.querySelectorAll('.card').forEach(c=>{let n=qtyValue(c.querySelector('.qty input').value);if(n)a.push('• '+c.dataset.name+' — '+n)})
  if(!a.length){alert('حدد النواقص والكميات أولاً\nআগে ঘাটতি পণ্য ও পরিমাণ নির্বাচন করুন');return}
